@@ -1,7 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hello, this is an Friend List app made on Ruby on Rails following the Learn Ruby on Rails - Full Course: https://youtu.be/fmyvWz5TUWg
+
+
+link to the teacher repository: https://github.com/flatplanet/railsfriends
 
 Things you may want to cover:
 
