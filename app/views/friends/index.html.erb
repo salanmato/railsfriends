@@ -1,0 +1,71 @@
+<style>
+  td{
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .link-to
+  {
+    color: black;
+    text-decoration: none
+
+  }
+  .link-to:hover
+  {
+    color: blue
+  }
+</style>
+<br/>
+<% if user_signed_in? %>
+  <table class="table table-hover table-bordered">
+    <thead class="table-dark ">
+      <tr>
+      <th>Friend</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Twitter</th>
+      <th></th>
+      <th></th>
+
+      </tr>
+    </thead>
+
+    <tbody >
+      <% @friends.each do |friend| %>
+      <% if friend.user == current_user %>
+        <tr>
+
+        <td>
+          <%= link_to friend.first_name + ' ' + friend.last_name, friend, class:"link-to"%>
+        </td>
+        <td>
+          <%= link_to friend.email, friend, class:"link-to"%>
+        </td>
+        <td>
+          <%= link_to friend.phone, friend, class:"link-to"%>
+        </td>
+        <td>
+          <%= link_to friend.twitter, 'http://www.twitter.com/' + friend.twitter, class:"link-to" %>
+        </td>
+       <!-- <td>
+          <%= friend.user_id%>
+        </td>
+        -->
+        <td>
+          <%= link_to "Edit", edit_friend_path(friend), class:"btn btn-link link-to" %>
+        </td>
+        <td>
+          <%= button_to "Delete", friend, method: :delete, class:"btn btn-outline-danger"%>
+        </td>
+        </tr>
+      <% end %>
+    </tbody>
+    <% end %>
+
+  </table>
+
+  <%= link_to "New friend", new_friend_path, class:"btn btn-secondary" %>
+<% else %>
+  <% render 'home/header' %>
+<% end %>
+
